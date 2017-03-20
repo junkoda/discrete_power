@@ -97,7 +97,9 @@ PowerSpectrum* power_alloc(const char filename[], const double sigma_8)
   
   ps->n= nlines;
 
-  ps->interp= gsl_interp_alloc(gsl_interp_cspline, ps->n);
+  ps->interp= gsl_interp_alloc( gsl_interp_linear, ps->n);
+ 
+  //ps->interp= gsl_interp_alloc(gsl_interp_cspline, ps->n);
   ps->acc= gsl_interp_accel_alloc();
 
   const int n_required= (int) gsl_interp_min_size(ps->interp);
